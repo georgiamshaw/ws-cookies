@@ -21,6 +21,12 @@ module.exports = (req, res) => {
         Location: "/"
       });
       return res.end();
+    case "POST /logout":
+      res.writeHead(302, {
+        "Set-Cookie": "logged_in=bloo; Max-Age=0",
+        Location: "/"
+    });
+      return res.end();
     default:
       res.writeHead(404, {
         "Content-Type": "text/html",
