@@ -27,6 +27,19 @@ module.exports = (req, res) => {
         Location: "/"
     });
       return res.end();
+    case "GET /auth_check":
+        if (req.headers.cookie.includes("logged_in=true")) {
+          res.writeHead(200, {
+            "Content-Type": "text/html"
+          });
+          res.end("auth worked");
+        }
+        else {
+        res.writeHead(401, {
+          "Content-Type": "text/html"
+        });
+        res.end("this is the end - auth failed");
+    };
     default:
       res.writeHead(404, {
         "Content-Type": "text/html",
